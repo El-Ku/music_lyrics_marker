@@ -1,0 +1,5 @@
+1. once the play button is clicked once, ability to load another mp3 file and play it. resetting the system
+2. every time music is paused printout the marked_ts_array to a simple csv file.
+3. put some empty space between file browse area and other controls. how to give empty space in pysimpleGUI
+4. load marked_ts_array from a csv file. and start the mp3 from a pre-selected timestamp.
+5. put all of the above in a tab. create another tab where i can create multiple mp3's for each line. It will act like a mp3 splitter. 
