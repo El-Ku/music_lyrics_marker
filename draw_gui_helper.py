@@ -1,5 +1,6 @@
-# a set of helper functions. Used by draw_gui class.
+import csv
 
+# a set of helper functions. Used by draw_gui class.
 class DrawGuiHelper():
     def __init__(self):
         pass  # nothing to initialize
@@ -40,3 +41,12 @@ class DrawGuiHelper():
         if(marked_ts_array == []):
             marked_ts_array = [[]]
         return marked_ts_array  # num_lines_marked and marked timestamps
+    
+    def write_ts_to_csv(self, marked_ts_array):
+        with open("marked_timestamps.csv", mode='w', newline='') as file:
+            writer = csv.writer(file)
+            print(marked_ts_array)
+            # Writing the data rows
+            for row in marked_ts_array:
+                print(row)
+                writer.writerow(row)

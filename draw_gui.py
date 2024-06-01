@@ -89,7 +89,7 @@ class DrawGui():
         else:
             self.window["-PLAY-"].update("PLAY")
             self.audio_player.playback.pause()
-            print()
+            self.draw_gui_helper.write_ts_to_csv(self.controller.marked_ts_array)
             
     # update the table. called to show changes in marked_ts_array
     def update_table(self, marked_ts_array):
