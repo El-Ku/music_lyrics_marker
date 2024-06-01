@@ -52,10 +52,12 @@ class DrawGui():
                             key='-TABLE-',
                             tooltip='Timestamps at which lines are marked in the audio file')],
         self.layout = [
+            [pg.Text("", size=(0, 1))],
             [pg.Text("C:/Users/wipin/Desktop/DATA DRIVE/Vedas/2 Yajur veda/Krishna Yajur Veda/KYV001.mp3", text_color="black", \
                     background_color="white", size=(100,2), enable_events=True, key="-AUDIO_FILE_NAME-"),
                 pg.FileBrowse('Browse', auto_size_button=True, key="-AUDIO_FILE-", enable_events=True, \
                     initial_folder="C:\\Users\\wipin\\Desktop\\DATA DRIVE\\Vedas")],
+            [pg.Text("", size=(0, 1))],
             [pg.Column(control_buttons, element_justification="center"), slider_element, pg.Column(timestamp_table), \
                 pg.Push(), pg.Column(info_panel, element_justification="right")]  
         ]
