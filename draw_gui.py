@@ -39,8 +39,11 @@ class DrawGui():
             [pg.Text("Total time: ", text_color="red", font=small_font),
                 pg.Text("00:00", font=info_text_font, size=(6,1), border_width=1, relief="solid", key="-TOTAL_TIME-")],
         ]
-        slider_element = pg.Slider(range=(0, 100), default_value=100, enable_events=True, \
-                orientation='vertical', key='-VOL_CONTROL-')
+        slider_element = [
+            [pg.Text("Volume", text_color="red", font=small_font)],
+            [pg.Slider(range=(0, 100), default_value=100, enable_events=True, \
+                orientation='vertical', key='-VOL_CONTROL-')]
+        ]
         timestamp_table = [pg.Table(values=[[0,0]], headings=["Marked @", "Duration"], max_col_width=25, 
                             background_color='lightblue',        
                             auto_size_columns=True,
@@ -58,7 +61,7 @@ class DrawGui():
                 pg.FileBrowse('Browse', auto_size_button=True, key="-AUDIO_FILE-", enable_events=True, \
                     initial_folder="C:\\Users\\wipin\\Desktop\\DATA DRIVE\\Vedas")],
             [pg.Text("", size=(0, 1))],
-            [pg.Column(control_buttons, element_justification="center"), slider_element, pg.Column(timestamp_table), \
+            [pg.Column(control_buttons, element_justification="center"), pg.Column(slider_element), pg.Column(timestamp_table), \
                 pg.Push(), pg.Column(info_panel, element_justification="right")]  
         ]
     
@@ -125,4 +128,5 @@ class DrawGui():
     
     # close the window
     def close_window(self):
+        self.draw_gui_helper.write_ts_to_csv(self.controller.marked_ts_array)
         self.window.close()    
