@@ -39,6 +39,7 @@ class ControlGui():
         elif force_reset_playback == 1 or (event == "-PLAY-" or event == "PLAY-KEY"):
             print(self.window["-LOAD_TS_CB-"].get())
             if(self.play_clicked_once == 0):  # the very first time play button is clicked.
+                # check if we need to preload the marked_ts from a file
                 self.play_clicked_once = 1
                 audio_file_fullname = self.window["-AUDIO_FILE_NAME-"].get()
                 self.file_name = audio_file_fullname
@@ -46,6 +47,13 @@ class ControlGui():
                 self.total_audio_duration = self.audio_player.playback.duration
                 self.draw_app_gui.update_total_audio_duration(self.total_audio_duration)
                 self.audio_player.playback.play() # plays loaded audio file from the beginning
+                # load marked_ts from a csv file and update stuff on screen
+                if(self.window["-LOAD_TS_CB-"].get() == True):            
+                    self.marked_ts_array = self.draw_app_gui.draw_gui_helper.read_ts_from_csv()
+                    self.num_lines_marked = len(self.marked_ts_array)
+                    self.audio_player.move_curr_position(self.marked_ts_array[-1][0])    # seek to the latest playtime
+                    self.draw_app_gui.update_time_boxes()
+                    self.draw_app_gui.update_num_lines_marked(self.marked_ts_array)
             self.draw_app_gui.toggle_play_btn()
         elif event == "-BACK_5_SECS-":   # backward by 5 secs
             self.audio_player.move_curr_position(secs_to_move=-5)
