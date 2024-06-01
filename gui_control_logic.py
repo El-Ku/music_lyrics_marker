@@ -15,14 +15,30 @@ class ControlGui():
         self.last_marked_ts = 0 
         self.marked_ts_array = [[]]
         self.num_lines_marked = 0
+        self.file_name = ""
+        
     # what to do for each event from the gui window. a series of if elif statements.
     def check_for_gui_events(self, event, values):
+        # check if the user has changed the audio file after clicking the play button once
+        force_reset_playback = 0
+        if(self.window["-AUDIO_FILE_NAME-"].get() != self.file_name):
+            if(self.play_clicked_once == 1):
+                self.audio_player.playback.stop()
+                self.play_clicked_once = 0
+                force_reset_playback = 1
+                self.num_lines_marked = 0
+                self.marked_ts_array = [[]] 
+                self.last_marked_ts = 0 
+                
+
+        # check for events             
         if event is None or event == "-CLOSE_BTN-":
             self.draw_app_gui.close_window()
-        elif event == "-PLAY-" or event == "PLAY-KEY":
+        elif force_reset_playback == 1 or (event == "-PLAY-" or event == "PLAY-KEY"):
             if(self.play_clicked_once == 0):  # the very first time play button is clicked.
                 self.play_clicked_once = 1
                 audio_file_fullname = self.window["-AUDIO_FILE_NAME-"].get()
+                self.file_name = audio_file_fullname
                 self.audio_player.update_playback_file(audio_file_fullname) 
                 self.total_audio_duration = self.audio_player.playback.duration
                 self.draw_app_gui.update_total_audio_duration(self.total_audio_duration)
