@@ -21,20 +21,23 @@ class ControlGui():
     def check_for_gui_events(self, event, values):
         # check if the user has changed the audio file after clicking the play button once
         force_reset_playback = 0
-        if(self.window["-AUDIO_FILE_NAME-"].get() != self.file_name):
-            if(self.play_clicked_once == 1):
+        if(self.window["-AUDIO_FILE_NAME-"].get() != self.file_name or event == "-RESTART-"):
+            if(self.play_clicked_once == 1 or event == "-RESTART-"):
                 self.audio_player.playback.stop()
                 self.play_clicked_once = 0
                 force_reset_playback = 1
                 self.num_lines_marked = 0
                 self.marked_ts_array = [[]] 
                 self.last_marked_ts = 0 
+                self.draw_app_gui.update_num_lines_marked(self.marked_ts_array)
+                self.draw_app_gui.update_time_boxes()
                 
 
         # check for events             
         if event is None or event == "-CLOSE_BTN-":
             self.draw_app_gui.close_window()
         elif force_reset_playback == 1 or (event == "-PLAY-" or event == "PLAY-KEY"):
+            print(self.window["-LOAD_TS_CB-"].get())
             if(self.play_clicked_once == 0):  # the very first time play button is clicked.
                 self.play_clicked_once = 1
                 audio_file_fullname = self.window["-AUDIO_FILE_NAME-"].get()

@@ -25,7 +25,7 @@ class DrawGui():
             [pg.Button("10 mins", key="-FORW_10_MIN-")]
         ]
         control_buttons = [
-            [pg.Button("PLAY", key="-PLAY-"), pg.Button("MARK", key="-MARK-")],
+            [pg.Button("RESTART", key="-RESTART-"), pg.Button("PLAY", key="-PLAY-"), pg.Button("MARK", key="-MARK-")],
             [pg.Column(layout_backward, element_justification="center"), pg.Column(layout_forward, element_justification="center")],   
             [pg.Button("CLOSE", key="-CLOSE_BTN-")]
         ]
@@ -54,12 +54,16 @@ class DrawGui():
                             alternating_row_color='lightyellow',
                             key='-TABLE-',
                             tooltip='Timestamps at which lines are marked in the audio file')],
+        checkbox_element = [
+            pg.Checkbox(text="Load marked timestamps from marked_ts_input.csv file", key="-LOAD_TS_CB-")
+        ]
         self.layout = [
             [pg.Text("", size=(0, 1))],
             [pg.Text("C:/Users/wipin/Desktop/DATA DRIVE/Vedas/2 Yajur veda/Krishna Yajur Veda/KYV001.mp3", text_color="black", \
                     background_color="white", size=(100,2), enable_events=True, key="-AUDIO_FILE_NAME-"),
                 pg.FileBrowse('Browse', auto_size_button=True, key="-AUDIO_FILE-", enable_events=True, \
                     initial_folder="C:\\Users\\wipin\\Desktop\\DATA DRIVE\\Vedas")],
+            [checkbox_element],
             [pg.Text("", size=(0, 1))],
             [pg.Column(control_buttons, element_justification="center"), pg.Column(slider_element), pg.Column(timestamp_table), \
                 pg.Push(), pg.Column(info_panel, element_justification="right")]  
@@ -107,6 +111,7 @@ class DrawGui():
         # print("index 1: ",index)
         if(marked_ts_array == [[]]):
             self.update_table([[]])
+            self.window["-NUM_LINES_MARKED-"].update(0)
             return 0, [[]] 
         marked_ts_array = self.draw_gui_helper.remove_outdated_timestamps(curr_time, marked_ts_array)
         self.update_table(marked_ts_array)
