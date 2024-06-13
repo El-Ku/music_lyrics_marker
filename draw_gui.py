@@ -1,5 +1,6 @@
 import PySimpleGUI as pg
 from draw_gui_helper import DrawGuiHelper
+from gui_layouts import GuiLayout
 
 class DrawGui():
     def __init__(self, theme="DarkAmber", title="Music Lyrics Marker", big_font=("Arial", 16), small_font=("Arial", 12), info_text_font=("Arial", 11)):
@@ -10,67 +11,12 @@ class DrawGui():
         self.info_text_font = info_text_font
         self.window = []
         self.draw_gui_helper = DrawGuiHelper()
-        pg.theme(self.theme)
+        self.gui_layout = GuiLayout()
         
-        layout_backward = [  
-            [pg.Text("Jump Backward", text_color="red", font=big_font)],
-            [pg.Button("5 secs", key="-BACK_5_SECS-")],
-            [pg.Button("1 min", key="-BACK_1_MIN-")],
-            [pg.Button("10 mins", key="-BACK_10_MIN-")]
-        ]
-        layout_forward = [  
-            [pg.Text("Jump Forward", text_color="red", font=big_font)],
-            [pg.Button("5 secs", key="-FORW_5_SECS-")],
-            [pg.Button("1 min", key="-FORW_1_MIN-")],
-            [pg.Button("10 mins", key="-FORW_10_MIN-")]
-        ]
-        control_buttons = [
-            [pg.Button("RESTART", key="-RESTART-"), pg.Button("PLAY", key="-PLAY-"), pg.Button("MARK", key="-MARK-")],
-            [pg.Column(layout_backward, element_justification="center"), pg.Column(layout_forward, element_justification="center")],   
-            [pg.Button("CLOSE", key="-CLOSE_BTN-")]
-        ]
-        info_panel = [
-            [pg.Text("# of lines marked: ", text_color="red", font=small_font),
-                pg.Text("0", font=info_text_font, size=(6,1), border_width=1, relief="solid", key="-NUM_LINES_MARKED-")],
-            [pg.Text("Elapsed time: ", text_color="red", font=small_font),
-                pg.Text("00:00", font=info_text_font, size=(6,1), border_width=1, relief="solid", key="-CURR_TIME-")],
-            [pg.Text("Remaining time: ", text_color="red", font=small_font),
-                pg.Text("00:00", font=info_text_font, size=(6,1), border_width=1, relief="solid", key="-REM_TIME-")],
-            [pg.Text("Total time: ", text_color="red", font=small_font),
-                pg.Text("00:00", font=info_text_font, size=(6,1), border_width=1, relief="solid", key="-TOTAL_TIME-")],
-        ]
-        slider_element = [
-            [pg.Text("Volume", text_color="red", font=small_font)],
-            [pg.Slider(range=(0, 100), default_value=100, enable_events=True, \
-                orientation='vertical', key='-VOL_CONTROL-')]
-        ]
-        timestamp_table = [pg.Table(values=[[0,0]], headings=["Marked @", "Duration"], max_col_width=25, 
-                            background_color='lightblue',        
-                            auto_size_columns=True,
-                            display_row_numbers=True,
-                            justification='right',
-                            text_color='black',
-                            num_rows=10,
-                            alternating_row_color='lightyellow',
-                            key='-TABLE-',
-                            tooltip='Timestamps at which lines are marked in the audio file')],
-        checkbox_element = [
-            pg.Checkbox(text="Load marked timestamps from marked_ts_input.csv file", key="-LOAD_TS_CB-")
-        ]
-        self.layout = [
-            [pg.Text("", size=(0, 1))],
-            [pg.Text("C:/Users/wipin/Desktop/DATA DRIVE/Vedas/2 Yajur veda/Krishna Yajur Veda/KYV001.mp3", text_color="black", \
-                    background_color="white", size=(100,2), enable_events=True, key="-AUDIO_FILE_NAME-"),
-                pg.FileBrowse('Browse', auto_size_button=True, key="-AUDIO_FILE-", enable_events=True, \
-                    initial_folder="C:\\Users\\wipin\\Desktop\\DATA DRIVE\\Vedas")],
-            [checkbox_element],
-            [pg.Text("", size=(0, 1))],
-            [pg.Column(control_buttons, element_justification="center"), pg.Column(slider_element), pg.Column(timestamp_table), \
-                pg.Push(), pg.Column(info_panel, element_justification="right")]  
-        ]
-    
     # draw and return the pysimpleGui window 
     def draw_gui(self):
+        self.layout = self.gui_layout.setup_layout(theme=self.theme, big_font=self.big_font, 
+                                                   small_font=self.small_font, info_text_font=self.info_text_font)
         window = pg.Window(self.title, self.layout, finalize=True)
         # short cut keys
         window.bind("<p>", "PLAY-KEY")  # press "p" to play/pause
@@ -130,8 +76,22 @@ class DrawGui():
         rem_time = self.draw_gui_helper.sec2_timestring(self.controller.total_audio_duration-curr_secs)
         self.window["-CURR_TIME-"].update(curr_time)
         self.window["-REM_TIME-"].update(rem_time)
+        
+    def update_table_music_splitter(self, timestamps):
+        marked_ts_string = []
+        for i in range(len(timestamps)):
+            marked_ts_string.append([f"{timestamps[i]:.3f}"])
+        self.window['-TABLE2-'].update(values=marked_ts_string)
     
+    def update_time_boxes_music_splitter(self, max_i, i, elapsed_secs):
+        self.window["-TOTAL_NUM_FILES-"].update(max_i)
+        self.window["-CURR_FILE_NUM-"].update(i+1)
+        self.window["-REM_FILES-"].update(max_i-i-1)
+        elapsed_secs_str = self.draw_gui_helper.sec2_timestring(elapsed_secs)
+        self.window["-ELAPSED_TIME-"].update(elapsed_secs_str)          
+        
     # close the window
-    def close_window(self):
-        self.draw_gui_helper.write_ts_to_csv(self.controller.marked_ts_array)
+    def close_window(self, write_csv=False):
+        if(write_csv == True):
+            self.draw_gui_helper.write_ts_to_csv(self.controller.marked_ts_array)
         self.window.close()    

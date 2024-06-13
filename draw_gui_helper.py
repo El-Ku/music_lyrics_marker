@@ -49,9 +49,10 @@ class DrawGuiHelper():
             for row in marked_ts_array:
                 writer.writerow(row)
                 
-    def read_ts_from_csv(self):
-        with open("pre_loaded_marked_timestamps.csv", mode='r', newline='') as file:
+    def read_ts_from_csv(self, file_name):
+        with open(file_name, mode='r', newline='') as file:
             reader = csv.reader(file)
             # Reading the data rows. each element in a row is typecasted into a float from string.
             marked_ts_array = [[float(col) for col in row] for row in reader]
             return marked_ts_array
+    
