@@ -1,4 +1,7 @@
-__pycache__/*
+__pycache__/
 Split_Audios/
+lyric_images/
 
 test.py
+output.avi
+final_video.mp4

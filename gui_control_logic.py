@@ -3,6 +3,8 @@ from play_audio import AudioPlay
 import time
 from music_splitter_helper import *
 from concurrent.futures import ThreadPoolExecutor
+from img_generator import ImgGenerator
+from vid_generator import VidGenerator
 
 # this class decides what happens when you click a button on the gui. 
 # The functions which act on input are written in a seperate helper file. 
@@ -21,6 +23,8 @@ class ControlGui():
         self.music_splitter_helper = MusicSplitterHelper(draw_gui_object)
         self.executor = ThreadPoolExecutor(max_workers=1)
         self.future = None
+        self.img_generator = ImgGenerator()
+        self.vid_generator = VidGenerator()
         
     # what to do for each event from the gui window. a series of if elif statements.
     def check_for_gui_events(self, event, values):
@@ -56,7 +60,7 @@ class ControlGui():
                     self.audio_player.playback.play() # plays loaded audio file from the beginning
                     # load marked_ts from a csv file and update stuff on screen
                     if(self.window["-LOAD_TS_CB-"].get() == True):            
-                        self.marked_ts_array = self.draw_app_gui.draw_gui_helper.read_ts_from_csv(file_name="pre_loaded_marked_timestamps.csv")
+                        self.marked_ts_array = self.draw_app_gui.draw_gui_helper.read_ts_from_csv(file_name="other_files/pre_load_timestamps.csv")
                         self.num_lines_marked = len(self.marked_ts_array)
                         self.audio_player.move_curr_position(self.marked_ts_array[-1][0])    # seek to the latest playtime
                         self.draw_app_gui.update_time_boxes()
@@ -117,7 +121,7 @@ class ControlGui():
             if event is None or event == "-CLOSE_BTN2-":
                 self.draw_app_gui.close_window(write_csv=False)
             elif event == "-START_SPLIT-":
-                marked_timestamps = self.draw_app_gui.draw_gui_helper.read_ts_from_csv(file_name="marked_timestamps_for_splitting.csv")
+                marked_timestamps = self.draw_app_gui.draw_gui_helper.read_ts_from_csv(file_name="other_files/timestamps_for_splitting.csv")
                 ignore_first = self.window["-IGNORE_FIRST_CB-"].get()
                 ignore_last = self.window["-IGNORE_LAST_CB-"].get()
                 print(marked_timestamps)
@@ -133,6 +137,30 @@ class ControlGui():
                 return False
             else: # If the window is not closed, then continue the main loop
                 return True
-                
         
+        elif(active_tab == "Create Lyric Images and Videos"):
+            ##############          TAB        #####################
+            # Split an audio file into multiple audio files based on input csv file which contains timestamps
+
+            # check for events             
+            if event is None or event == "-CLOSE_BTN3-":
+                pass
+                # self.draw_app_gui.close_window(write_csv=False)  
+            elif event == "-START_IMG_GEN-":
+                if(self.future == None):
+                    self.future = self.executor.submit(self.img_generator.generate_images)
+            elif event == "-STOP_IMG_GEN-":
+                self.img_generator.stop_img_creation()
+            elif event == "-START_VID_GEN-":
+                if(self.future == None):
+                    file_name = self.window["-AUDIO_FILE_NAME_FOR_VID_GEN-"].get()
+                    self.future = self.executor.submit(self.vid_generator.generate_video, file_name)
+            elif event == "-STOP_VID_GEN-":
+                self.vid_generator.stop_vid_creation()
         
+
+            # If the window is closed exit out of main loop
+            if(event == None or event == "-CLOSE_BTN3-"):
+                return False
+            else: # If the window is not closed, then continue the main loop
+                return True

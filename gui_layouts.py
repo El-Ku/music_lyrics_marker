@@ -115,17 +115,66 @@ class GuiLayout():
                 pg.Push(), pg.Column(info_panel, element_justification="right")]  
         ]
         return layout_audio_splitter
+    
+    def lyrics_vid_gen_layout(self, big_font, small_font, info_text_font):
+        ######## layout for marking the timestamps of an audio
+        control_buttons = [
+            [pg.Button("START IMG_GEN", key="-START_IMG_GEN-"), pg.Button("STOP IMG_GEN", key="-STOP_IMG_GEN-")],
+            [pg.Button("START VID_GEN", key="-START_VID_GEN-"), pg.Button("STOP VID_GEN", key="-STOP_VID_GEN-")],
+            [pg.Button("CLOSE", key="-CLOSE_BTN3-")],
+        ]
+        info_panel = [
+            [pg.Text("Total # of image files: ", text_color="red", font=small_font),
+                pg.Text("0", font=info_text_font, size=(6,1), border_width=1, relief="solid", key="-TOTAL_NUM_IMAGES-")],
+            [pg.Text("Currently saving: ", text_color="red", font=small_font),
+                pg.Text("0", font=info_text_font, size=(6,1), border_width=1, relief="solid", key="-CURR_IMAGE_NUM-")],
+            [pg.Text("Remaining # of images: ", text_color="red", font=small_font),
+                pg.Text("00:00", font=info_text_font, size=(6,1), border_width=1, relief="solid", key="-REM_IMAGES-")],
+            [pg.Text("Elapsed time: ", text_color="red", font=small_font),
+                pg.Text("00:00", font=info_text_font, size=(6,1), border_width=1, relief="solid", key="-ELAPSED_TIME_IMG-")],
+        ]
+        timestamp_table = pg.Table(
+            values=[[0]], 
+            headings=["Marked @"], 
+            max_col_width=25, 
+            background_color='lightblue',        
+            auto_size_columns=True,
+            display_row_numbers=True,
+            justification='right',
+            text_color='black',
+            num_rows=10,
+            alternating_row_color='lightyellow',
+            key='-TABLE3-',
+            tooltip='Timestamps at which lines are marked in the audio file'
+        )
+        layout_img_vid_gen = [
+            [pg.Text("", size=(0, 1))],
+            [pg.Text("C:/Users/wipin/Desktop/DATA DRIVE/Vedas/2 Yajur veda/Krishna Yajur Veda/KYV001.mp3", text_color="black", \
+                    background_color="white", size=(100,2), enable_events=True, key="-AUDIO_FILE_NAME_FOR_VID_GEN-"),
+                pg.FileBrowse('Browse', auto_size_button=True, key="-AUDIO_FILE3-", enable_events=True, \
+                    initial_folder="C:\\Users\\wipin\\Desktop\\DATA DRIVE\\Vedas")],
+            [pg.Text("", size=(0, 1))],
+            [pg.Column(control_buttons, element_justification="center"), pg.Push(), timestamp_table, \
+                pg.Push(), pg.Column(info_panel, element_justification="right")]  
+        ]
+        return layout_img_vid_gen
         
     def setup_layout(self, theme, big_font, small_font, info_text_font):
         pg.theme(theme)
         layout_ts_marker = self.setup_ts_marker_layout(big_font, small_font, info_text_font)
         layout_audio_splitter = self.audio_splitter_layout(big_font, small_font, info_text_font)
+        layout_img_vid_gen = self.lyrics_vid_gen_layout(big_font, small_font, info_text_font)
         
         # Finally putting all tabs together
         layout = [
             [pg.TabGroup([
                 [pg.Tab("Mark Timestamps", layout_ts_marker),
-                pg.Tab("Audio Splitter", layout_audio_splitter)]
-            ], key='-TAB_GROUP-')]
+                pg.Tab("Audio Splitter", layout_audio_splitter),
+                pg.Tab("Create Lyric Images and Videos", layout_img_vid_gen)]
+            ], key='-TAB_GROUP-')],
+            [pg.Text("", size=(0, 1))],
+            [pg.Text("Logging:", font=big_font)],
+            [pg.Multiline(size=(None,10), key='-LOGGING_BOX-', autoscroll=True, disabled=True, expand_x=True)],
+            [pg.Text("", size=(0, 1))],
         ]
         return layout

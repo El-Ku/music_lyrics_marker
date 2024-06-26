@@ -42,8 +42,8 @@ class DrawGuiHelper():
             marked_ts_array = [[]]
         return marked_ts_array  # num_lines_marked and marked timestamps
     
-    def write_ts_to_csv(self, marked_ts_array):
-        with open("marked_timestamps.csv", mode='w', newline='') as file:
+    def write_ts_to_csv(self, marked_ts_array, file_name):
+        with open(file_name, mode='w', newline='') as file:
             writer = csv.writer(file)
             # Writing the data rows
             for row in marked_ts_array:
