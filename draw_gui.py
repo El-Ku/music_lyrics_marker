@@ -20,10 +20,8 @@ class DrawGui():
         window = pg.Window(self.title, self.layout, finalize=True)
         # short cut keys
         window.bind("<p>", "PLAY-KEY")  # press "p" to play/pause
-        window.bind("<m>", "MARK-KEY")  # press "p" to mark
+        window.bind("<space>", "MARK-KEY")  # press "space bar" to mark
         self.window = window
-        # print(window["-TAB1_MARK-"].Widget.winfo_width())
-        print(window.size)
         return window
     
     # set the gui_control_logic object

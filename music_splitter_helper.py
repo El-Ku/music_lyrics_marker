@@ -22,7 +22,7 @@ class MusicSplitterHelper():
                 start_time = timestamps[i] * 1000  # Convert to milliseconds
                 end_time = timestamps[i + 1] * 1000  # Convert to milliseconds
                 segment = audio[start_time:end_time]
-                segment.export(f"Split_Audios\segment_{i+1}.mp3", format="mp3")
+                segment.export(f"Split_Audios\{i+1:03}.mp3", format="mp3")
                 print(f"Segment {i+1} saved from {timestamps[i]}s to {timestamps[i+1]}s")
             else:
                 self.stop_audio_splitting_flag = False
