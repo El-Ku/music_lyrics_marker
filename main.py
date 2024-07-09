@@ -1,13 +1,14 @@
 from draw_gui import DrawGui
 from gui_control_logic import ControlGui
-import PySimpleGUI as pg
 import time
 
 def main():
+    print("Setting up the GUI...")
     draw_app_gui = DrawGui()
     window = draw_app_gui.draw_gui()
     gui_control = ControlGui(draw_app_gui)
     draw_app_gui.set_controller_object(gui_control)
+    print("The GUI is ready to use")
     
     while True:
         # even if the window doesnt have an event, because of the 1000 msec timeout, it will be called once every second.

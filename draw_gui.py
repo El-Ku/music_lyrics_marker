@@ -1,6 +1,7 @@
 import PySimpleGUI as pg
-from draw_gui_helper import DrawGuiHelper
+import draw_gui_helper
 from gui_layouts import GuiLayout
+import time
 
 class DrawGui():
     def __init__(self, theme="DarkAmber", title="Music Lyrics Marker", big_font=("Arial", 16), small_font=("Arial", 12), info_text_font=("Arial", 11)):
@@ -10,7 +11,6 @@ class DrawGui():
         self.small_font = small_font
         self.info_text_font = info_text_font
         self.window = []
-        self.draw_gui_helper = DrawGuiHelper()
         self.gui_layout = GuiLayout()
         
     # draw and return the pysimpleGui window 
@@ -22,6 +22,8 @@ class DrawGui():
         window.bind("<p>", "PLAY-KEY")  # press "p" to play/pause
         window.bind("<m>", "MARK-KEY")  # press "p" to mark
         self.window = window
+        # print(window["-TAB1_MARK-"].Widget.winfo_width())
+        print(window.size)
         return window
     
     # set the gui_control_logic object
@@ -34,21 +36,23 @@ class DrawGui():
 
     # what is the total duration of the audio. display on gui
     def update_total_audio_duration(self, duration):
-        self.window["-TOTAL_TIME-"].update(self.draw_gui_helper.sec2_timestring(duration))
+        self.window["-TOTAL_TIME-"].update(draw_gui_helper.sec2_timestring(duration))
         
     # toggle the play button to pause and vice versa when its clicked.
     def toggle_play_btn(self):
         if(self.window["-PLAY-"].ButtonText == "PLAY"):
             self.window["-PLAY-"].update("PAUSE")
             self.audio_player.playback.resume()
+            print("Play audio button was pressed")
         else:
             self.window["-PLAY-"].update("PLAY")
             self.audio_player.playback.pause()
-            self.draw_gui_helper.write_ts_to_csv(self.controller.marked_ts_array, 'csv_files/timestamps.csv')
+            draw_gui_helper.write_ts_to_csv(self.controller.marked_ts_array, 'other_files/timestamps.csv')
+            print("Pause audio button was pressed")
             
     # update the table. called to show changes in marked_ts_array
     def update_table(self, marked_ts_array):
-        marked_ts_string = self.draw_gui_helper.format_floats_for_table(marked_ts_array)
+        marked_ts_string = draw_gui_helper.format_floats_for_table(marked_ts_array)
         self.window['-TABLE-'].update(values=marked_ts_string)
     
     # update the table and the number of marked lines. Called after playback is moved backwards.
@@ -58,8 +62,8 @@ class DrawGui():
         if(marked_ts_array == [[]]):
             self.update_table([[]])
             self.window["-NUM_LINES_MARKED-"].update(0)
-            return 0, [[]] 
-        marked_ts_array = self.draw_gui_helper.remove_outdated_timestamps(curr_time, marked_ts_array)
+            return 0, [[]]
+        marked_ts_array = draw_gui_helper.remove_outdated_timestamps(curr_time, marked_ts_array)
         self.update_table(marked_ts_array)
         # print(marked_ts_array)
         if(marked_ts_array == [[]]):
@@ -72,10 +76,22 @@ class DrawGui():
     # update the current play time and remaining time on gui
     def update_time_boxes(self):
         curr_secs = self.audio_player.playback.curr_pos
-        curr_time = self.draw_gui_helper.sec2_timestring(curr_secs)
-        rem_time = self.draw_gui_helper.sec2_timestring(self.controller.total_audio_duration-curr_secs)
+        curr_time = draw_gui_helper.sec2_timestring(curr_secs)
+        rem_time = draw_gui_helper.sec2_timestring(self.controller.total_audio_duration-curr_secs)
         self.window["-CURR_TIME-"].update(curr_time)
         self.window["-REM_TIME-"].update(rem_time)
+        
+    # This function is called whenever the a new line is marked. It is useful to 
+    # check if the marked time is actually in between two lines. By seeing the flat part in the waveform.    
+    def generate_waveform_audio(self):
+        if not self.audio_player.playback.playing:
+            return
+        elif not self.audio_player.playback.active:
+            return
+        img = draw_gui_helper.generate_waveform_image(self.controller.raw_audio_data, self.controller.frame_rate, self.audio_player.playback.curr_pos)
+        # print(len(img))
+        self.window["-AUDIO_WAVEFORM-"].update(data=img)  
+            
         
     def update_table_music_splitter(self, timestamps):
         marked_ts_string = []
@@ -87,11 +103,24 @@ class DrawGui():
         self.window["-TOTAL_NUM_FILES-"].update(max_i)
         self.window["-CURR_FILE_NUM-"].update(i+1)
         self.window["-REM_FILES-"].update(max_i-i-1)
-        elapsed_secs_str = self.draw_gui_helper.sec2_timestring(elapsed_secs)
-        self.window["-ELAPSED_TIME-"].update(elapsed_secs_str)          
+        elapsed_secs_str = draw_gui_helper.sec2_timestring(elapsed_secs)
+        self.window["-ELAPSED_TIME-"].update(elapsed_secs_str)   
+        
+    def update_time_boxes_img_vid_gen(self, max_i, i, elapsed_secs):
+        self.window["-TOTAL_NUM_IMAGES-"].update(max_i)
+        self.window["-CURR_IMAGE_NUM-"].update(i+1)
+        self.window["-REM_IMAGES-"].update(max_i-i-1)
+        elapsed_secs_str = draw_gui_helper.sec2_timestring(elapsed_secs)
+        self.window["-ELAPSED_TIME_IMG-"].update(elapsed_secs_str)          
         
     # close the window
     def close_window(self, write_csv=False):
         if(write_csv == True):
-            self.draw_gui_helper.write_ts_to_csv(self.controller.marked_ts_array, 'other_files/timestamps.csv')
+            draw_gui_helper.write_ts_to_csv(self.controller.marked_ts_array, 'other_files/timestamps.csv')
+            print("timestamps were saved to a csv file")
+        print("Saving the contents of a log textbox to a text file")
+        log_content = self.window['-LOGGING_BOX-'].get()
+        with open('log.txt', 'w', encoding='utf-8') as file:
+            file.write(log_content)
+        self.audio_player.playback.stop()
         self.window.close()    

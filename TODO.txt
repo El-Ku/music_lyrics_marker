@@ -1,4 +1,0 @@
-1. Update the timeboxes on 3rd gui as img and vid is generated
-2. Add a logging text box to GUI.
-3. Before closing save the contents of log file into a text file.
-

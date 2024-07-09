@@ -34,3 +34,4 @@ class MusicSplitterHelper():
         
     def stop_audio_splitting(self):
         self.stop_audio_splitting_flag = True    
+        print("stop splitting audio button was pressed")

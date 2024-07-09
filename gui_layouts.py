@@ -9,12 +9,14 @@ class GuiLayout():
         # pg.theme("DarkAmber")
         layout_backward = [  
             [pg.Text("Jump Backward", text_color="red", font=big_font)],
+            [pg.Button("50 msecs", key="-BACK_50_MSECS-")],
             [pg.Button("5 secs", key="-BACK_5_SECS-")],
             [pg.Button("1 min", key="-BACK_1_MIN-")],
             [pg.Button("10 mins", key="-BACK_10_MIN-")]
         ]
         layout_forward = [  
             [pg.Text("Jump Forward", text_color="red", font=big_font)],
+            [pg.Button("50 msecs", key="-FORW_50_MSECS-")],
             [pg.Button("5 secs", key="-FORW_5_SECS-")],
             [pg.Button("1 min", key="-FORW_1_MIN-")],
             [pg.Button("10 mins", key="-FORW_10_MIN-")]
@@ -66,6 +68,8 @@ class GuiLayout():
             [pg.Text("", size=(0, 1))],
             [pg.Column(control_buttons, element_justification="center"), pg.Column(slider_element), timestamp_table, \
                 pg.Push(), pg.Column(info_panel, element_justification="right")], 
+            [pg.Text("Audio Waveform Display")],
+            [pg.Image(key='-AUDIO_WAVEFORM-')],
         ]
         return layout_ts_marker
     

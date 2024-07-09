@@ -4,7 +4,7 @@ import os
 import time
 
 class ImgGenerator():
-    def __init__(self):
+    def __init__(self, draw_gui_object):
         self.im_w = 1920
         self.im_h = 1080
         self.cwd = os.getcwd()
@@ -21,6 +21,7 @@ class ImgGenerator():
         self.stop_img_creation_flag = False  
         self.img_generation_under_progress = False
         self.find_heights_lang()
+        self.draw_gui_class = draw_gui_object
 
     def find_heights_of_fontsizes(self, max_font_size, sample_text, font_name):
         font_size = 0
@@ -173,9 +174,11 @@ class ImgGenerator():
         print("Number of lines to create images for = ",len(dn_lyrics))
         assert len(dn_lyrics) == len(en_lyrics), "dn and en have different sizes. Check lyrics.py file"
         assert len(dn_lyrics) == len(head_lyrics), "dn and head have different sizes. Check lyrics.py file"
+        print("Sanity test: lyrics and heading text files have same sizes")
         
-        start_time = time.time()
+        start_time_secs = time.time()
         for ind in range(len(dn_lyrics)):
+            self.draw_gui_class.update_time_boxes_img_vid_gen(len(dn_lyrics), ind, time.time()-start_time_secs)
             if(self.stop_img_creation_flag == True):
                 print("Stopped image creation midway")
                 self.stop_img_creation_flag = False
@@ -185,10 +188,11 @@ class ImgGenerator():
             head_l = head_lyrics[ind]
             self.create_single_img(dn_l, en_l, head_l, ind+1)
             print("Created image for line#", ind+1)
-        print(f"It took {time.time()-start_time} seconds to finish processing {ind+1} images")
+        print(f"It took {time.time()-start_time_secs} seconds to finish processing {ind+1} images")
         self.img_generation_under_progress = False
+        self.draw_gui_class.update_time_boxes_img_vid_gen(len(dn_lyrics), ind, time.time()-start_time_secs)
+        
     def stop_img_creation(self):
-        print(self.img_generation_under_progress)
-        print(self.stop_img_creation_flag)
         if(self.img_generation_under_progress == True):
             self.stop_img_creation_flag = True   
+            print("Stop image generation button was pressed")

@@ -131,6 +131,7 @@ class VidGenerator():
 
         video = mpe.VideoFileClip("output.avi")     # Create a VideoFileClip object for the AVI file
         audio = mpe.AudioFileClip(mp3_file_name)    # Create an AudioFileClip object for the MP3 file
+        print("video and audio clips were created")
         
         start_time = time.time()
         final_clip = video.set_audio(audio)   # Combine the video and audio clips
@@ -144,3 +145,4 @@ class VidGenerator():
     def stop_vid_creation(self):
         if(self.vid_generation_under_progress == True):
             self.stop_vid_creation_flag = True
+            print("Stop video generation button was pressed")

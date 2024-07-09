@@ -5,6 +5,8 @@ from music_splitter_helper import *
 from concurrent.futures import ThreadPoolExecutor
 from img_generator import ImgGenerator
 from vid_generator import VidGenerator
+import logger_setup
+import draw_gui_helper
 
 # this class decides what happens when you click a button on the gui. 
 # The functions which act on input are written in a seperate helper file. 
@@ -22,15 +24,25 @@ class ControlGui():
         self.file_name = ""
         self.music_splitter_helper = MusicSplitterHelper(draw_gui_object)
         self.executor = ThreadPoolExecutor(max_workers=1)
+        self.executor2 = ThreadPoolExecutor(max_workers=1)
         self.future = None
-        self.img_generator = ImgGenerator()
+        self.img_generator = ImgGenerator(draw_gui_object)
         self.vid_generator = VidGenerator()
+        logger_setup.setup_logger(self.window, '-LOGGING_BOX-')
         
     # what to do for each event from the gui window. a series of if elif statements.
     def check_for_gui_events(self, event, values):
+        
+        if event == '-LOGGING_BOX-':
+            log_msg = values[event]  
+            self.window['-LOGGING_BOX-'].update(log_msg, append=True)
+            # self.window['-AUDIO_WAVEFORM-'].update(data=(np.random.rand(256, 256, 3) * 255).astype(np.uint8))
+            
         active_tab = values['-TAB_GROUP-']
         if(active_tab == "Mark Timestamps"):
             ##############          TAB 1       #####################
+            # print(self.window["-TAB1_MARK-"].Widget.winfo_width())
+            # self.window["-AUDIO_WAVEFORM-"].set_size((self.window["-TAB1_MARK-"].Widget.winfo_width(), 300))
             # check if the user has changed the audio file after clicking the play button once
             force_reset_playback = 0
             if(self.window["-AUDIO_FILE_NAME-"].get() != self.file_name or event == "-RESTART-"):
@@ -42,17 +54,19 @@ class ControlGui():
                     self.marked_ts_array = [[]] 
                     self.last_marked_ts = 0 
                     self.draw_app_gui.update_num_lines_marked(self.marked_ts_array)
-                    self.draw_app_gui.update_time_boxes()
-                    
+                    self.draw_app_gui.update_time_boxes()        
 
             # check for events             
             if event is None or event == "-CLOSE_BTN-":
                 self.draw_app_gui.close_window(write_csv=True)
+                if self.future2:
+                    self.future2.cancel()
             elif force_reset_playback == 1 or (event == "-PLAY-" or event == "PLAY-KEY"):
                 if(self.play_clicked_once == 0):  # the very first time play button is clicked.
                     # check if we need to preload the marked_ts from a file
                     self.play_clicked_once = 1
                     audio_file_fullname = self.window["-AUDIO_FILE_NAME-"].get()
+                    self.raw_audio_data, self.frame_rate = draw_gui_helper.get_raw_audio_data(audio_file_fullname)
                     self.file_name = audio_file_fullname
                     self.audio_player.update_playback_file(audio_file_fullname) 
                     self.total_audio_duration = self.audio_player.playback.duration
@@ -60,12 +74,15 @@ class ControlGui():
                     self.audio_player.playback.play() # plays loaded audio file from the beginning
                     # load marked_ts from a csv file and update stuff on screen
                     if(self.window["-LOAD_TS_CB-"].get() == True):            
-                        self.marked_ts_array = self.draw_app_gui.draw_gui_helper.read_ts_from_csv(file_name="other_files/pre_load_timestamps.csv")
+                        self.marked_ts_array = draw_gui_helper.read_ts_from_csv(file_name="other_files/pre_load_timestamps.csv")
                         self.num_lines_marked = len(self.marked_ts_array)
                         self.audio_player.move_curr_position(self.marked_ts_array[-1][0])    # seek to the latest playtime
                         self.draw_app_gui.update_time_boxes()
                         self.draw_app_gui.update_num_lines_marked(self.marked_ts_array)
                 self.draw_app_gui.toggle_play_btn()
+            elif event == "-BACK_50_MSECS-":   # backward by 50 msecs
+                self.audio_player.move_curr_position(secs_to_move=-0.05)
+                self.num_lines_marked, self.marked_ts_array = self.draw_app_gui.update_num_lines_marked(self.marked_ts_array)
             elif event == "-BACK_5_SECS-":   # backward by 5 secs
                 self.audio_player.move_curr_position(secs_to_move=-5)
                 self.num_lines_marked, self.marked_ts_array = self.draw_app_gui.update_num_lines_marked(self.marked_ts_array)
@@ -78,6 +95,8 @@ class ControlGui():
                 self.audio_player.move_curr_position(secs_to_move=-600)
                 self.num_lines_marked, self.marked_ts_array = self.draw_app_gui.update_num_lines_marked(self.marked_ts_array)
                 # print("marked_ts_array 3: ",self.marked_ts_array)
+            elif event == "-FORW_50_MSECS-":   # forward by 50 msecs
+                self.audio_player.move_curr_position(secs_to_move=0.05)
             elif event == "-FORW_5_SECS-":   # forward by 5 secs
                 self.audio_player.move_curr_position(secs_to_move=5)
             elif event == "-FORW_1_MIN-":  # forward by 1 min
@@ -101,6 +120,7 @@ class ControlGui():
                     self.last_marked_ts = time.time()
                     self.num_lines_marked += 1
                     self.window["-NUM_LINES_MARKED-"].update(self.num_lines_marked)
+                    self.future2 = self.executor2.submit(self.draw_app_gui.generate_waveform_audio)
                 else:
                     print("Dont click ""Mark"" too quickly! The line cannot be < 1 second long")
             # If the audio is playing and window is not closed update the time boxes        
@@ -114,6 +134,7 @@ class ControlGui():
                 return True
             
         elif(active_tab == "Audio Splitter"):
+            self.window["-AUDIO_WAVEFORM-"].set_size((0, 0))
             ##############          TAB 2       #####################
             # Split an audio file into multiple audio files based on input csv file which contains timestamps
 
@@ -121,10 +142,10 @@ class ControlGui():
             if event is None or event == "-CLOSE_BTN2-":
                 self.draw_app_gui.close_window(write_csv=False)
             elif event == "-START_SPLIT-":
-                marked_timestamps = self.draw_app_gui.draw_gui_helper.read_ts_from_csv(file_name="other_files/timestamps_for_splitting.csv")
+                marked_timestamps = draw_gui_helper.read_ts_from_csv(file_name="other_files/timestamps_for_splitting.csv")
                 ignore_first = self.window["-IGNORE_FIRST_CB-"].get()
                 ignore_last = self.window["-IGNORE_LAST_CB-"].get()
-                print(marked_timestamps)
+                # print(marked_timestamps)
                 file_name = self.window["-AUDIO_FILE_NAME_TO_SPLIT-"].get()
                 # start threading for this task
                 print("A thread has started to split the audio file")
@@ -139,6 +160,7 @@ class ControlGui():
                 return True
         
         elif(active_tab == "Create Lyric Images and Videos"):
+            self.window["-AUDIO_WAVEFORM-"].set_size((0, 0))
             ##############          TAB        #####################
             # Split an audio file into multiple audio files based on input csv file which contains timestamps
 
@@ -164,3 +186,4 @@ class ControlGui():
                 return False
             else: # If the window is not closed, then continue the main loop
                 return True
+            
