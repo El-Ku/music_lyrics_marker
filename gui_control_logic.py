@@ -79,6 +79,7 @@ class ControlGui():
                         self.audio_player.move_curr_position(self.marked_ts_array[-1][0])    # seek to the latest playtime
                         self.draw_app_gui.update_time_boxes()
                         self.draw_app_gui.update_num_lines_marked(self.marked_ts_array)
+                self.future2 = self.executor2.submit(self.draw_app_gui.generate_waveform_audio)
                 self.draw_app_gui.toggle_play_btn()
             elif event == "-BACK_50_MSECS-":   # backward by 50 msecs
                 self.audio_player.move_curr_position(secs_to_move=-0.05)
