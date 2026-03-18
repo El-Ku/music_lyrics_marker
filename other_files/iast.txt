@@ -1,3 +1,263 @@
-i̱ṣe tvo̱rje tvā̍ vā̱yava̍ḥ sthopā̱yava̍sstha de̱vo va̍ssavi̱tā prārpa̍yatu̱  śreṣṭha̍tamāya̱ karma̍ṇa̱ ā pyā̍yadhvamaghniyā devabhā̱ga mūrja̍svatī̱ḥ paya̍svatīḥ  pra̱jāva̍tīranamī̱vā a̍ya̱kṣmā mā va̍sste̱na ī̍śata̱ mā'ghaśagͫ̍so ru̱drasya̍  he̱tiḥ pari̍ vo vṛṇaktu dhru̱vā a̱smingopa̍tau syāta ba̱hvīryaja̍mānasya pa̱śūnpā̍hi ..
-ya̱jñasya̍ gho̱ṣada̍si̱ pratyu̍ṣṭa̱g̱ͫ rakṣa̱ḥ pratyu̍ṣṭā̱ arā̍taya̱ḥ  preyama̍gāddhi̱ṣaṇā̍ ba̱ṟhiraccha̱ manu̍nā kṛ̱tā sva̱dhayā̱ vita̍ṣṭā̱  ta āva̍hanti ka̱vaya̍ḥ pu̱rastā̎dde̱vebhyo̱ juṣṭa̍mi̱ha ba̱ṟhirā̱sade̍  de̱vānā̎ṃ pariṣū̱tama̍si va̱ṟṣavṛ̍ddhamasi̱ deva̍barhi̱rmā tvā̱'nvaṅmā  ti̱ryakparva̍ te rādhyā samācche̱ttā te̱ mā ri̍ṣa̱ndeva̍barhiḥ śa̱tava̍lśa̱ṃ  vi ro̍ha sa̱hasra̍valśā̱ vi va̱yagͫ ru̍hema pṛthi̱vyāḥ sa̱ṃpṛca̍ḥ pāhi susa̱ṃbhṛtā̎  tvā̱ sambha̍rā̱myadi̍tyai̱ rāsnā̎sīndrā̱ṇyai sa̱nnaha̍naṃ pū̱ṣā te̎  gra̱nthiṅgra̍thnātu̱ sa te̱ mā''sthā̱dindra̍sya tvā bā̱hubhyā̱mudya̍cche̱  bṛha̱spate̎rmū̱rdhnā ha̍rāmyu̱rva̍ntari̍kṣa̱manvi̍hi devaṅga̱mama̍si ..
-śuṃdha̍dhva̱ṃ daivyā̍ya̱ karma̍ṇe devaya̱jyāyai̍ māta̱riśva̍no  gha̱rmo̎si̱ dyaura̍si pṛthi̱vya̍si vi̱śvadhā̍yā asi para̱meṇa̱ dhāmnā̱  dṛgͫha̍sva̱ mā hvā̱rvasū̍nāmpa̱vitra̍masi śa̱tadhā̍ra̱ṃ vasū̍nāṃ pa̱vitra̍masi  sa̱hasra̍dhāragͫ hu̱taḥ sto̱ko hu̱to dra̱phso̎'gnaye̍ bṛha̱te nākā̍ya̱ svāhā̱  dyāvā̍pṛthi̱vībhyā̱g̱ͫ sā vi̱śvāyu̱ḥ sā vi̱śvavya̍cā̱ḥ sā vi̱śvaka̍rmā̱ sampṛ̍cyadhvamṛtāvarīrū̱rmiṇī̱rmadhu̍mattamā ma̱ndrā dhana̍sya sā̱taye̱ some̍na̱  tvā''ta̍na̱cmīndrā̍ya̱ dadhi̱ viṣṇo̍ ha̱vyagͫ ra̍kṣasva .. 
+ॐ saha nāvavatu,
+saha nau bhunaktu,
+sahavīryaṃ karavāvahai,
+tejasvi nāvadhītamastu mā vidviṣāvahai.
+ॐ śāntiḥ śāntiḥ śāntiḥ.
+ॐ uśan ha vai vājaśravasaḥ sarvavedasaṃ dadau,
+tasya ha naciketā nāma putra āsa. 1.
+ta ha kumāra santaṃ dakṣiṇāsu nīyamānāsu śraddhāviveśa soʼmanyata. 2.
+pītodakā jagdhatṛṇā dugdhadohā nirindriyāḥ,
+anandā nāma te lokāstān sa gacchati tā dadat. 3.
+sa hovāca pitaraṃ tata kasmai māṃ dāsyasīti,
+dvitīyaṃ tṛtīyaṃ ta hovāca mṛtyave tvā dadāmīti. 4.
+bahūnāmemi prathamo bahūnāmemi madhyamaḥ,
+ki svidyamasya kartavyaṃ yanmayāʼdya kariṣyati. 5.
+anupaśya yathā pūrve pratipaśya tathāʼpare,
+sasyamiva martyaḥ pacyate sasyamivājāyate punaḥ. 6.
+vaiśvānaraḥ praviśatyatithirbrāhmaṇo gṛhān,
+tasyaitā śāntiṃ kurvanti hara vaivasvatodakam. 7.
+āśāpratīkṣe saṃgata sūnṛtāṃ ceṣṭāpūrte putrapaśūśca sarvān,
+etadvṛṅkte puruṣasyālpamedhaso yasyānaśnanvasati brāhmaṇo gṛhe. 8.
+tisro rātrīryadavātsīrgṛhe meʼnaśnan brahmannatithirnamasyaḥ,
+namasteʼstu brahman svasti meʼstu tasmātprati trīnvarānvṛṇīṣva. 9.
+śāntasaṃkalpaḥ sumanā yathā syād vītamanyurgautamo māʼbhi mṛtyo,
+tvatprasṛṣṭaṃ māʼbhivadetpratīta etat trayāṇāṃ prathamaṃ varaṃ vṛṇe. 10.
+yathā purastād bhavitā pratīta auddālakirāruṇirmatprasṛṣṭaḥ,
+sukha rātrīḥ śayitā vītamanyuḥ tvāṃ dadṛśivānmṛtyumukhāt pramuktam. 11.
+svarge loke na bhayaṃ kiṃcanāsti na tatra tvaṃ na jarayā bibheti,
+ubhe tīrtvāʼśanāyāpipāse śokātigo modate svargaloke. 12.
+sa tvamagni svargyamadhyeṣi mṛtyo prabrūhi tva śraddadhānāya mahyam,
+svargalokā amṛtatvaṃ bhajanta etad dvitīyena vṛṇe vareṇa. 13.
+pra te bravīmi tadu me nibodha svargyamagniṃ naciketaḥ prajānan,
+anantalokāptimatho pratiṣṭhāṃ viddhi tvametaṃ nihitaṃ guhāyām. 14.
+lokādimagniṃ tamuvāca tasmai yā iṣṭakā yāvatīrvā yathā vā,
+sa cāpi tatpratyavadadyathoktaṃ athāsya mṛtyuḥ punarevāha tuṣṭaḥ. 15.
+tamabravīt prīyamāṇo mahātmā varaṃ tavehādya dadāmi bhūyaḥ,
+tavaiva nāmnā bhavitāʼyamagniḥ sṛṅkāṃ cemāmanekarūpāṃ gṛhāṇa. 16.
+triṇāciketastribhiretya sandhiṃ trikarmakṛttarati janmamṛtyū,
+brahmajajñaṃ devamīḍyaṃ viditvā nicāyyemā śāntimatyantameti. 17.
+triṇāciketastrayametadviditvā ya evaṃ vidvāścinute nāciketam,
+sa mṛtyupāśān purataḥ praṇodya śokātigo modate svargaloke. 18.
+eṣa teʼgnirnaciketaḥ svargyo yamavṛṇīthā dvitīyena vareṇa,
+etamagniṃ tavaiva pravakṣyanti janāsaḥ tṛtīyaṃ varaṃ naciketo vṛṇīṣva. 19.
+yeyaṃ prete vicikitsā manuṣyeʼstītyeke nāyamastīti caike,
+etadvidyāmanuśiṣṭastvayāʼhaṃ varāṇāmeṣa varastṛtīyaḥ. 20.
+devairatrāpi vicikitsitaṃ purā na hi suvijñeyamaṇureṣa dharmaḥ,
+anyaṃ varaṃ naciketo vṛṇīṣva mā moparotsīrati mā sṛjainam. 21.
+devairatrāpi vicikitsitaṃ kila tvaṃ ca mṛtyo yanna sujñeyamāttha,
+vaktā cāsya tvādṛganyo na labhyo nānyo varastulya etasya kaścit. 22.
+śatāyuṣaḥ putrapautrānvṛṇīṣvā bahūnpaśūn hastihiraṇyamaśvān,
+bhūmermahadāyatanaṃ vṛṇīṣva svayaṃ ca jīva śarado yāvadicchasi. 23.
+etattulyaṃ yadi manyase varaṃ vṛṇīṣva vittaṃ cirajīvikāṃ ca,
+mahābhūmau naciketastvamedhi kāmānāṃ tvā kāmabhājaṃ karomi. 24.
+ye ye kāmā durlabhā martyaloke sarvān kāmāśchandataḥ prārthayasva,
+imā rāmāḥ sarathāḥ satūryā na hīdṛśā lambhanīyā manuṣyaiḥ,
+ābhirmatprattābhiḥ paricārayasva naciketo maraṇaṃ māʼnuprākṣīḥ. 25.
+śvobhāvā martyasya yadantakaitat sarveṃdriyāṇāṃ jarayanti tejaḥ,
+api sarvaṃ jīvitamalpameva tavaiva vāhāstava nṛtyagīte. 26.
+na vittena tarpaṇīyo manuṣyo lapsyāmahe vittamadrākṣma cettvā,
+jīviṣyāmo yāvadīśiṣyasi tvaṃ varastu me varaṇīyaḥ sa eva. 27.
+ajīryatāmamṛtānāmupetya jīryanmartyaḥ kvadhaḥsthaḥ prajānan,
+abhidhyāyan varṇaratipramodān atidīrghe jīvite ko rameta. 28.
+yasminnidaṃ vicikitsanti mṛtyo yatsāmparāye mahati brūhi nastat,
+yoʼyaṃ varo gūḍhamanupraviṣṭo nānyaṃ tasmānnaciketā vṛṇīte. 29.
+anyacchreyoʼnyadutaiva preyaste ubhe nānārthe puruṣa sinītaḥ,
+tayoḥ śreya ādadānasya sādhu bhavati hīyateʼrthādya u preyo vṛṇīte. 1.
+śreyaśca preyaśca manuṣyametaḥ tau samparītya vivinakti dhīraḥ,
+śreyo hi dhīroʼbhi preyaso vṛṇīte preyo mando yogakṣemādvṛṇīte. 2.
+sa tvaṃ priyānpriyarūpāṃśca kāmān abhidhyāyannaciketoʼtyasrākṣīḥ,
+naitāṃ sṛṅkāṃ vittamayīmavāpto yasyāṃ majjanti bahavo manuṣyāḥ. 3.
+dūramete viparīte viṣūcī avidyā yā ca vidyeti jñātā,
+vidyābhīpsinaṃ naciketasaṃ manye na tvā kāmā bahavoʼlolupanta. 4.
+avidyāyāmantare vartamānāḥ svayaṃ dhīrāḥ paṇḍitaṃmanyamānāḥ,
+dandramyamāṇāḥ pariyanti mūḍhā andhenaiva nīyamānā yathāndhāḥ. 5.
+na sāmparāyaḥ pratibhāti bālaṃ pramādyantaṃ vittamohena mūḍham,
+ayaṃ loko nāsti para iti mānī punaḥ punarvaśamāpadyate me. 6.
+śravaṇāyāpi bahubhiryo na labhyaḥ śa‍ṛṇvantoʼpi bahavo yaṃ na vidyuḥ,
+āścaryo vaktā kuśaloʼsya labdhā āścaryo jñātā kuśalānuśiṣṭaḥ. 7.
+na nareṇāvareṇa prokta eṣa suvijñeyo bahudhā cintyamānaḥ,
+ananyaprokte gatiratra nāsti aṇīyān hyatarkyamaṇupramāṇāt. 8.
+naiṣā tarkeṇa matirāpaneyā proktānyenaiva sujñānāya preṣṭha,
+yāṃ tvamāpaḥ satyadhṛtirbatāsi tvādṛṅno bhūyānnaciketaḥ praṣṭā. 9.
+jānāmyahaṃ śevadhirityanityaṃ na hyadhruvaiḥ prāpyate hi dhruvaṃ tat,
+tato mayā nāciketaścitoʼgniḥ anityairdravyaiḥ prāptavānasmi nityam. 10.
+kāmasyāptiṃ jagataḥ pratiṣṭhāṃ kratorānantyamabhayasya pāram,
+stomamahadurugāyaṃ pratiṣṭhāṃ dṛṣṭvā dhṛtyā dhīro naciketoʼtyasrākṣīḥ. 11.
+taṃ durdarśaṃ gūḍhamanupraviṣṭaṃ guhāhitaṃ gahvareṣṭhaṃ purāṇam,
+adhyātmayogādhigamena devaṃ matvā dhīro harṣaśokau jahāti. 12.
+etacchrutvā samparigṛhya martyaḥ pravṛhya dharmyamaṇumetamāpya,
+sa modate modanīya hi labdhvā vivṛta sadma naciketasaṃ manye. 13.
+anyatra dharmādanyatrādharmādanyatrāsmātkṛtākṛtāt,
+anyatra bhūtācca bhavyācca yattatpaśyasi tadvada. 14.
+sarve vedā yatpadamāmananti tapāsi sarvāṇi ca yadvadanti,
+yadicchanto brahmacaryaṃ caranti tatte pada saṅgraheṇa bravīmyomityetat. 15.
+etaddhyevākṣaraṃ brahma etaddhyevākṣaraṃ param,
+etaddhyevākṣaraṃ jñātvā yo yadicchati tasya tat. 16.
+etadālambana śreṣṭhametadālambanaṃ param,
+etadālambanaṃ jñātvā brahmaloke mahīyate. 17.
+na jāyate mriyate vā vipaścinnāyaṃ kutaścinna babhūva kaścit,
+ajo nityaḥ śāśvatoʼyaṃ purāṇo na hanyate hanyamāne śarīre. 18.
+hantā cenmanyate hantu hataścenmanyate hatam,
+ubhau tau na vijānīto nāya hanti na hanyate. 19.
+aṇoraṇīyānmahato mahīyānātmāʼsya jantornihito guhāyām,
+tamakratuḥ paśyati vītaśoko dhātuprasādānmahimānamātmanaḥ. 20.
+āsīno dūraṃ vrajati śayāno yāti sarvataḥ,
+kastaṃ madāmadaṃ devaṃ madanyo jñātumarhati. 21.
+aśarīra śarīreṣvanavastheṣvavasthitam,
+mahāntaṃ vibhumātmānaṃ matvā dhīro na śocati. 22.
+nāyamātmā pravacanena labhyo na medhayā na bahunā śrutena,
+yamevaiṣa vṛṇute tena labhyaḥ tasyaiṣa ātmā vivṛṇute tanū svām. 23.
+nāvirato duścaritānnāśānto nāsamāhitaḥ,
+nāśāntamānaso vāʼpi prajñānenainamāpnuyāt. 24.
+yasya brahma ca kṣatraṃ ca ubhe bhavata odanaḥ,
+mṛtyuryasyopasecanaṃ ka itthā veda yatra saḥ. 25.
+ṛtaṃ pibantau sukṛtasya loke guhāṃ praviṣṭau parame parārdhe,
+chāyātapau brahmavido vadanti pañcāgnayo ye ca triṇāciketāḥ. 1.
+yaḥ seturījānānāmakṣaraṃ brahma yat param,
+abhayaṃ titīrṣatāṃ pāraṃ nāciketa śakemahi. 2.
+ātmāna rathinaṃ viddhi śarīra rathameva tu,
+buddhiṃ tu sārathiṃ viddhi manaḥ pragrahameva ca. 3.
+indriyāṇi hayānāhurviṣayā steṣu gocarān,
+ātmendriyamanoyuktaṃ bhoktetyāhurmanīṣiṇaḥ. 4.
+yastvavijñānavānbhavatyayuktena manasā sadā,
+tasyendriyāṇyavaśyāni duṣṭāśvā iva sāratheḥ. 5.
+yastu vijñānavānbhavati yuktena manasā sadā,
+tasyendriyāṇi vaśyāni sadaśvā iva sāratheḥ. 6.
+yastvavijñānavānbhavatyamanaskaḥ sadāʼśuciḥ,
+na sa tatpadamāpnoti saṃsāraṃ cādhigacchati. 7.
+yastu vijñānavānbhavati samanaskaḥ sadā śuciḥ,
+sa tu tatpadamāpnoti yasmādbhūyo na jāyate. 8.
+vijñānasārathiryastu manaḥ pragrahavānnaraḥ,
+soʼdhvanaḥ pāramāpnoti tadviṣṇoḥ paramaṃ padam. 9.
+indriyebhyaḥ parā hyarthā arthebhyaśca paraṃ manaḥ,
+manasastu parā buddhirbuddherātmā mahānparaḥ. 10.
+mahataḥ paramavyaktamavyaktātpuruṣaḥ paraḥ,
+puruṣānna paraṃ kiṃcitsā kāṣṭhā sā parā gatiḥ. 11.
+eṣa sarveṣu bhūteṣu gūḍhoʼʼtmā na prakāśate,
+dṛśyate tvagryayā buddhyā sūkṣmayā sūkṣmadarśibhiḥ. 12.
+yacchedvāṅmanasī prājñastadyacchejjñāna ātmani,
+jñānamātmani mahati niyacchettadyacchecchānta ātmani. 13.
+uttiṣṭhata jāgrata prāpya varānnibodhata,
+kṣurasya dhārā niśitā duratyayā durgaṃ pathastatkavayo vadanti. 14.
+aśabdamasparśamarūpamavyayaṃ tathāʼrasaṃ nityamagandhavacca yat,
+anādyanantaṃ mahataḥ paraṃ dhruvaṃ nicāyya tanmṛtyumukhāt pramucyate. 15.
+nāciketamupākhyānaṃ mṛtyuprokta sanātanam,
+uktvā śrutvā ca medhāvī brahmaloke mahīyate. 16.
+ya imaṃ paramaṃ guhyaṃ śrāvayed brahmasaṃsadi,
+prayataḥ śrāddhakāle vā tadānantyāya kalpate  ptadānantyāya kalpata iti. 17.                                                                                                                    
+parāñci khāni vyatṛṇat svayambhūstasmātparāṅpaśyati nāntarātman,
+kaściddhīraḥ pratyagātmānamaikṣadāvṛttacakṣuramṛtatvamicchan. 1.
+parācaḥ kāmānanuyanti bālāste mṛtyoryanti vitatasya pāśam,
+atha dhīrā amṛtatvaṃ viditvā dhruvamadhruveṣviha na prārthayante. 2.
+yena rūpaṃ rasaṃ gandhaṃ śabdān sparśāśca maithunān,
+etenaiva vijānāti kimatra pariśiṣyate,
+etadvai tat. 3.
+svapnāntaṃ jāgaritāntaṃ cobhau yenānupaśyati,
+mahāntaṃ vibhumātmānaṃ matvā dhīro na śocati. 4.
+ya imaṃ madhvadaṃ veda ātmānaṃ jīvamantikāt,
+īśānaṃ bhūtabhavyasya na tato vijugupsate,
+etadvai tat. 5.
+yaḥ pūrvaṃ tapaso jātamadbhyaḥ pūrvamajāyata,
+guhāṃ praviśya tiṣṭhantaṃ yo bhūtebhirvyapaśyata,
+etadvai tat. 6.
+yā prāṇena saṃbhavatyaditirdevatāmayī,
+guhāṃ praviśya tiṣṭhantīṃ yā bhūtebhirvyajāyata,
+etadvai tat. 7.
+araṇyornihito jātavedā garbha iva subhṛto garbhiṇībhiḥ,
+dive dive īḍyo jāgṛvadbhirhaviṣmadbhirmanuṣyebhiragniḥ,
+etadvai tat. 8.
+yataścodeti sūryoʼstaṃ yatra ca gacchati,
+taṃ devāḥ sarveʼrpitāstadu nātyeti kaścana,
+etadvai tat. 9.
+yadeveha tadamutra yadamutra tadanviha,
+mṛtyoḥ sa mṛtyumāpnoti ya iha nāneva paśyati. 10.
+manasaivedamāptavyaṃ neha nānāʼsti kiṃcana,
+mṛtyoḥ sa mṛtyuṃ gacchati ya iha nāneva paśyati. 11.
+aṅguṣṭhamātraḥ puruṣo madhya ātmani tiṣṭhati,
+īśānaṃ bhūtabhavyasya na tato vijugupsate,
+etadvai tat. 12.
+aṅguṣṭhamātraḥ puruṣo jyotirivādhūmakaḥ,
+īśāno bhūtabhavyasya sa evādya sa u śvaḥ,
+etadvai tat. 13.
+yathodakaṃ durge vṛṣṭaṃ parvateṣu vidhāvati,
+evaṃ dharmān pṛthak paśyaṃstānevānuvidhāvati. 14.
+yathodakaṃ śuddhe śuddhamāsiktaṃ tādṛgeva bhavati,
+evaṃ munervijānata ātmā bhavati gautama. 15.
+puramekādaśadvāramajasyāvakracetasaḥ,
+anuṣṭhāya na śocati vimuktaśca vimucyate,
+etadvai tat. 1.
+hasaḥ śuciṣadvasurantarikṣasadhotā vediṣadatithirduroṇasat,
+nṛṣadvarasadṛtasadvyomasad abjā gojā ṛtajā adrijā ṛtaṃ bṛhat. 2.
+ūrdhvaṃ prāṇamunnayatyapānaṃ pratyagasyati,
+madhye vāmanamāsīnaṃ viśve devā upāsate. 3.
+asya visraṃsamānasya śarīrasthasya dehinaḥ,
+dehādvimucyamānasya kimatra pariśiṣyate,
+etadvai tat. 4.
+na prāṇena nāpānena martyo jīvati kaścana,
+itareṇa tu jīvanti yasminnetāvupāśritau. 5.
+hanta ta idaṃ pravakṣyāmi guhyaṃ brahma sanātanam,
+yathā ca maraṇaṃ prāpya ātmā bhavati gautama. 6.
+yonimanye prapadyante śarīratvāya dehinaḥ,
+sthāṇumanyeʼnusaṃyanti yathākarma yathāśrutam. 7.
+ya eṣa supteṣu jāgarti kāmaṃ kāmaṃ puruṣo nirmimāṇaḥ,
+tadeva śukraṃ tadbrahma tadevāmṛtamucyate,
+tasmillokāḥ śritāḥ sarve tadu nātyeti kaścana,
+etadvai tat. 8.
+agniryathaiko bhuvanaṃ praviṣṭo rūpaṃ rūpaṃ pratirūpo babhūva,
+ekastathā sarvabhūtāntarātmā rūpaṃ rūpaṃ pratirūpo bahiśca. 9.
+vāyuryathaiko bhuvanaṃ praviṣṭo rūpaṃ rūpaṃ pratirūpo babhūva,
+ekastathā sarvabhūtāntarātmā rūpaṃ rūpaṃ pratirūpo bahiśca. 10.
+sūryo yathā sarvalokasya cakṣuḥ na lipyate cākṣuṣairbāhyadoṣaiḥ,
+ekastathā sarvabhūtāntarātmā na lipyate lokaduḥkhena bāhyaḥ. 11.
+eko vaśī sarvabhūtāntarātmā ekaṃ rūpaṃ bahudhā yaḥ karoti,
+tamātmasthaṃ yeʼnupaśyanti dhīrāḥ teṣāṃ sukhaṃ śāśvataṃ netareṣām. 12.
+nityoʼnityānāṃ cetanaścetanānām eko bahūnāṃ yo vidadhāti kāmān,
+tamātmasthaṃ yeʼnupaśyanti dhīrāḥ teṣāṃ śāntiḥ śāśvatī netareṣām. 13.
+tadetaditi manyanteʼnirdeśyaṃ paramaṃ sukham,
+kathaṃ nu tadvijānīyāṃ kimu bhāti vibhāti vā. 14.
+na tatra sūryo bhāti na candratārakaṃ nemā vidyuto bhānti kutoʼyamagniḥ,
+tameva bhāntamanubhāti sarvaṃ tasya bhāsā sarvamidaṃ vibhāti. 15.
+ūrdhvamūloʼvākśākha eṣoʼśvatthaḥ sanātanaḥ,
+tadeva śukraṃ tadbrahma tadevāmṛtamucyate,
+tasmillokāḥ śritāḥ sarve tadu nātyeti kaścana,
+etadvai tat. 1.
+yadidaṃ kiṃ ca jagat sarvaṃ prāṇa ejati niḥsṛtam,
+mahadbhayaṃ vajramudyataṃ ya etadviduramṛtāste bhavanti. 2.
+bhayādasyāgnistapati bhayāttapati sūryaḥ,
+bhayādindraśca vāyuśca mṛtyurdhāvati pañcamaḥ. 3.
+iha cedaśakadboddhuṃ prākṣarīrasya visrasaḥ,
+tataḥ sargeṣu lokeṣu śarīratvāya kalpate. 4.
+yathāʼʼdarśe tathāʼʼtmani yathā svapne tathā pitṛloke,
+yathāʼpsu parīva dadṛśe tathā gandharvaloke chāyātapayoriva brahmaloke. 5.
+indriyāṇāṃ pṛthagbhāvamudayāstamayau ca yat,
+pṛthagutpadyamānānāṃ matvā dhīro na śocati. 6.
+indriyebhyaḥ paraṃ mano manasaḥ sattvamuttamam,
+sattvādadhi mahānātmā mahatoʼvyaktamuttamam. 7.
+avyaktāttu paraḥ puruṣo vyāpakoʼliṅga eva ca,
+yaṃ jñātvā mucyate janturamṛtatvaṃ ca gacchati. 8.
+na saṃdṛśe tiṣṭhati rūpamasya na cakṣuṣā paśyati kaścanainam,
+hṛdā manīṣā manasāʼbhiklṛpto ya etadviduramṛtāste bhavanti. 9.
+yadā pañcāvatiṣṭhante jñānāni manasā saha,
+buddhiśca na viceṣṭate tāmāhuḥ paramāṃ gatim. 10.
+tāṃ yogamiti manyante sthirāmindriyadhāraṇām,
+apramattastadā bhavati yogo hi prabhavāpyayau. 11.
+naiva vācā na manasā prāptuṃ śakyo na cakṣuṣā,
+astīti bruvatoʼnyatra kathaṃ tadupalabhyate. 12.
+astītyevopalabdhavyastattvabhāvena cobhayoḥ,
+astītyevopalabdhasya tattvabhāvaḥ prasīdati. 13.
+yadā sarve pramucyante kāmā yeʼsya hṛdi śritāḥ,
+atha martyoʼmṛto bhavatyatra brahma samaśnute. 14.
+yadā sarve prabhidyante hṛdayasyeha granthayaḥ,
+atha martyoʼmṛto bhavatyetāvaddhyanuśāsanam. 15.
+śataṃ caikā ca hṛdayasya nāḍyastāsāṃ mūrdhānamabhiniḥsṛtaikā,
+tayordhvamāyannamṛtatvameti viṣvaṅṅanyā utkramaṇe bhavanti. 16.
+aṅguṣṭhamātraḥ puruṣoʼntarātmā sadā janānāṃ hṛdaye saṃniviṣṭaḥ,
+taṃ svāccharīrātpravṛhenmuñjādiveṣīkāṃ dhairyeṇa,
+taṃ vidyācchukramamṛtaṃ taṃ vidyācchukramamṛtamiti. 17.
+mṛtyuproktāṃ naciketoʼtha labdhvā vidyāmetāṃ yogavidhiṃ ca kṛtsnam,
+brahmaprāpto virajoʼbhūdvimṛtyuranyoʼpyevaṃ yo vidadhyātmameva. 18.
+saha nāvavatu,
+saha nau bhunaktu,
+saha vīryaṃ karavāvahai,
+tejasvināvadhītamastu mā vidviṣāvahai. 19.
+ॐ śāntiḥ śāntiḥ śāntiḥ.

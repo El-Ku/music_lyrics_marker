@@ -1,8 +1,18 @@
 __pycache__/
+.pytest_cache/
+.claude/
 Split_Audios/
 lyric_images/
 
-test.py
+# Generated videos/outputs
 output.avi
 final_video.mp4
+
+# Font files
+*.ttf
+*.zip
+
+# App runtime files
+test.py
 log.txt
+app_config.json
